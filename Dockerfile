@@ -24,9 +24,13 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/ap
   && echo "deb http://security.ubuntu.com/ubuntu xenial-security main universe\n" >> /etc/apt/sources.list
 RUN apt-get -qqy update
 
-RUN apt-get install python-software-properties
-RUN add-apt-repository ppa:webupd8team/java
+RUN dpkg --configure -a
+RUN apt-get install -f
+
 RUN apt-get update
+RUN apt-get clean && sudo apt-get update
+RUN apt-get upgrade
+
 
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
