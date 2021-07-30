@@ -23,7 +23,6 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/ap
   && echo "deb http://security.ubuntu.com/ubuntu xenial-security main universe\n" >> /etc/apt/sources.list
 RUN apt-get -qqy update
 
-RUN aptitude install default-jre
 
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
@@ -34,7 +33,6 @@ RUN apt-get -qqy --no-install-recommends install \
   nodejs \
   firefox \
   google-chrome-stable \
-  openjdk-11-jdk\
   xvfb \
   xfonts-100dpi \
   xfonts-75dpi \
