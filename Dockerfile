@@ -23,8 +23,12 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/ap
   && echo "deb http://security.ubuntu.com/ubuntu xenial-security main universe\n" >> /etc/apt/sources.list
 RUN apt-get -qqy update
 
+RUN apt-get 
+
+RUN add-apt-repository ppa:webupd8team/java
 RUN apt-get update
-RUN apt install openjdk-11-jdk
+RUN apt-get install oracle-java8-installer
+
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 RUN echo 'node ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
