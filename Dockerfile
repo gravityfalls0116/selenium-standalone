@@ -33,7 +33,7 @@ RUN apt-get -qqy --no-install-recommends install \
   nodejs \
   firefox \
   google-chrome-stable \
-  openjdk-11-jre\
+  openjdk-11-jdk\
   xvfb \
   xfonts-100dpi \
   xfonts-75dpi \
