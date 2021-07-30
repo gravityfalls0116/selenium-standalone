@@ -23,8 +23,6 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/ap
   && echo "deb http://security.ubuntu.com/ubuntu xenial-security main universe\n" >> /etc/apt/sources.list
 RUN apt-get -qqy update
 
-RUN apt-get 
-
 RUN add-apt-repository ppa:webupd8team/java
 RUN apt-get update
 RUN apt-get install oracle-java8-installer
