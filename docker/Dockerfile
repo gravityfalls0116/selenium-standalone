@@ -29,7 +29,7 @@ RUN apt-get -qqy install \
     jq \
     software-properties-common \
     sudo \
-    openjdk-11-jre-headless \
+    openjdk-11-jre\
     wget \
     xvfb \
     xfonts-100dpi \
