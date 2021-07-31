@@ -82,6 +82,7 @@ RUN chmod +x /usr/bin/google-chrome
 RUN export DISPLAY=:99.0
 RUN Xvfb :99 -shmem -screen 0 1366x768x16 &
 
+WORKDIR /home/node
 # For development
 # ADD . ./selenium-standalone-local
 # RUN chown node:node -R .
