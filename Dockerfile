@@ -23,7 +23,6 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/ap
   && echo "deb http://ca.archive.ubuntu.com/ubuntu/ bionic-updates main restricted universe multiverse\n" >> /etc/apt/sources.list \
   && echo "deb http://ca.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse" >> /etc/apt/sources.list \
   && echo "deb http://security.ubuntu.com/ubuntu bionic-security main restricted universe multiverse" >> /etc/apt/sources.list \
-
   && echo "deb-src http://ca.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse\n" >> /etc/apt/sources.list \
   && echo "deb-src http://security.ubuntu.com/ubuntu bionic-security main restricted universe multiverse\n" >> /etc/apt/sources.list \
   && echo "deb-src http://ca.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse\n" >> /etc/apt/sources.list \
