@@ -95,7 +95,7 @@ RUN npm init -y
 RUN npm install -i selenium-standalone --unsafe-perm=true --allow-root
 
 USER root
-RUN chattr -i /home/node/node_modules/
+RUN chown -R root /home/node/node_modules/
 
 
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
