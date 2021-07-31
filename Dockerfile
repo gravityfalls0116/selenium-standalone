@@ -28,8 +28,8 @@ RUN dpkg --configure -a
 RUN apt-get install -f
 
 RUN apt-get update
-RUN apt-get clean && sudo apt-get update
-RUN apt-get upgrade
+RUN apt-get install -y unzip xvfb libxi6 libgconf-2-4
+RUN apt-get install default-jdk
 
 
 RUN groupadd --gid 1000 node \
