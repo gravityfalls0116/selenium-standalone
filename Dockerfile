@@ -94,9 +94,9 @@ ENV PATH=$PATH:/home/node/node_modules
 RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
 
-RUN sudo npm install -i -g --unsafe-perm=true --allow-root selenium-standalone
+RUN sudo npm install -i --unsafe-perm=true --allow-root selenium-standalone
 
-COPY --chown=node:node . .
+RUN sudo chown -R $USER /home/node/node_modules/selenium-standalone/.selenium/
 
 USER root
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
