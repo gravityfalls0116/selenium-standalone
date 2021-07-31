@@ -6,7 +6,6 @@ RUN ln -s /usr/bin/gcc-4.8 /usr/bin/gcc
 ENV LC_ALL=C
 ARG DEBIAN_FRONTEND=noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN=true
-RUN mv -i /etc/apt/source.list /etc/apt/sources.list
 SHELL ["/bin/bash", "-c"]
 
 EXPOSE 4444
@@ -25,6 +24,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/ap
   && echo "deb http://archive.ubuntu.com/ubuntu xenial-updates main universe\n" >> /etc/apt/sources.list \
   && echo "deb http://security.ubuntu.com/ubuntu xenial-security main universe\n" >> /etc/apt/sources.list
 RUN apt-get -qqy update
+RUN apt-get install build-essential
 
 RUN dpkg --configure -a
 
