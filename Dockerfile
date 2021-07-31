@@ -99,7 +99,5 @@ RUN npm install -i selenium-standalone --unsafe-perm=true --only=prod
 
 COPY --chown=node:node . .
 
-RUN chmod u+x -R 775 ~/.npm
-
 USER root
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
