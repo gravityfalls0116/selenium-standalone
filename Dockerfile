@@ -75,7 +75,7 @@ RUN unzip chromedriver_linux64.zip
 #다운로드 받은 크롬드라이버를 이동하고 실행 권한 주기
 RUN mv chromedriver /usr/bin/google-chrome
 RUN chown root:root /usr/bin/google-chrome
-RUN chmod +x /usr/bin/chromedriver
+RUN chmod +x /usr/bin/google-chrome
 
 RUN export DISPLAY=:99.0
 RUN Xvfb :99 -shmem -screen 0 1366x768x16 &
