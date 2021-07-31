@@ -29,7 +29,7 @@ RUN apt-get -qqy update
 RUN dpkg --configure -a
 
 RUN apt-get update -y
-RUN apt-get install -y apt-utils 2> >( grep -v 'debconf: delaying package configuration, since apt-utils is not installed' >&2 )
+RUN apt-get install -y apt-utils 2> >( grep -v 'debconf: Unable to correct problems, you have held broken packages.' >&2 )
 RUN apt-get install -y --no-install-recommends aptitude
 
 
