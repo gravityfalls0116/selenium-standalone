@@ -88,17 +88,17 @@ WORKDIR /home/node
 # RUN chown node:node -R .
 USER node
 
-RUN npm config set prefix '~/.npm-global'
-RUN echo "export PATH=~/.npm-global/bin:$PATH" >> ~/.profile
-RUN sh ~/.profile
-
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+ENV PATH=$PATH:/home/node/.npm-global/bin
+WORKDIR /home/node
+COPY package.json .
 
 RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
 
+RUN npm install -i selenium-standalone --unsafe-perm=true --only=prod
 
-
-RUN npm install -i selenium-standalone --unsafe-perm=true --allow-root && chmod -R 777 /home/node
+COPY . .
 
 
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
