@@ -87,6 +87,7 @@ WORKDIR /home/node
 # ADD . ./selenium-standalone-local
 # RUN chown node:node -R .
 
+USER node
 ENV NPM_CONFIG_PREFIX=/home/node/node_modules
 ENV PATH=$PATH:/home/node/node_modules
 
@@ -98,5 +99,4 @@ RUN npm init -y
 RUN npm install -i selenium-standalone --unsafe-perm=true --only=prod
 
 COPY --chown=node:node . .
-USER node
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
