@@ -25,9 +25,10 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/ap
   && echo "deb http://security.ubuntu.com/ubuntu xenial-security main universe\n" >> /etc/apt/sources.list
 RUN apt-get -qqy update
 
-RUN apt-get install -y --no-install-recommends aptitude
 RUN apt-get remove build-essential:i386
 RUN apt-get install build-essential
+
+RUN apt-get install -y --no-install-recommends aptitude
 
 RUN dpkg --configure -a
 
