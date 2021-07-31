@@ -95,7 +95,7 @@ ENV PATH=$PATH:/home/node/node_modules
 RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
 
-RUN npm install -i selenium-standalone --unsafe-perm=true --only=prod
+RUN npm install -i --unsafe-perm=true --only=prod selenium-standalone
 
 COPY --chown=node:node . .
 
