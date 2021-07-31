@@ -39,7 +39,7 @@ RUN groupadd --gid 1000 node \
 RUN echo 'node ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-RUN apt-get -qqy --no-install-recommends install \
+RUN apt-get install \
   nodejs \
   firefox \
   google-chrome-stable \
