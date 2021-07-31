@@ -73,9 +73,10 @@ RUN wget https://chromedriver.storage.googleapis.com/91.0.4472.101/chromedriver_
 RUN unzip chromedriver_linux64.zip
 
 #다운로드 받은 크롬드라이버를 이동하고 실행 권한 주기
-RUN mv chromedriver /home/node/node_modules/selenium-standalone/.selenium/chromedriver/latest-x64/chromedriver
-RUN chown root:root /home/node/node_modules/selenium-standalone/.selenium/chromedriver/latest-x64/chromedriver
-RUN chmod +x /home/node/node_modules/selenium-standalone/.selenium/chromedriver/latest-x64/chromedriver
+RUN mv chromedriver /usr/bin/google-chrome
+RUN chown root:root /usr/bin/google-chrome
+RUN chmod +x /usr/bin/google-chrome
+
 
 
 RUN export DISPLAY=:99.0
@@ -86,6 +87,7 @@ WORKDIR /home/node
 # ADD . ./selenium-standalone-local
 # RUN chown node:node -R .
 USER node
+RUN webdriver-manager update
 RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
 RUN npm install -i selenium-standalone
