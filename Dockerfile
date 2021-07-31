@@ -82,7 +82,6 @@ RUN chmod +x /usr/bin/google-chrome
 RUN export DISPLAY=:99.0
 RUN Xvfb :99 -shmem -screen 0 1366x768x16 &
 
-WORKDIR /home/node
 # For development
 # ADD . ./selenium-standalone-local
 # RUN chown node:node -R .
@@ -91,11 +90,11 @@ USER node
 ENV NPM_CONFIG_PREFIX=/home/node/node_modules
 ENV PATH=$PATH:/home/node/node_modules
 
+RUN chmod 777 node_modules
 RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
 
 RUN npm install -i selenium-standalone --unsafe-perm=true --only=prod
 
-USER root
 RUN chown -R root /home/node/node_modules/selenium-standalone/
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
