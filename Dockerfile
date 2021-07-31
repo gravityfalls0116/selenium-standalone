@@ -92,7 +92,7 @@ RUN npm config set prefix '~/.npm-global'
 RUN echo "export PATH=~/.npm-global/bin:$PATH" >> ~/.profile
 RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
-RUN npm install -g -i selenium-standalone --unsafe-perm=true --allow-root
+RUN npm install -i selenium-standalone --unsafe-perm=true --allow-root
 
 
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
