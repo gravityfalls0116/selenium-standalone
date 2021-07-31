@@ -96,5 +96,5 @@ RUN npm init -y
 
 RUN npm install -i selenium-standalone --unsafe-perm=true --only=prod
 
-RUN chown -R node /home/node/node_modules/selenium-standalone/.selenium/chromedriver/latest-x64/
+RUN chown -R node /home/node/node_modules/selenium-standalone/
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
