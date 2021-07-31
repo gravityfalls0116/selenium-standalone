@@ -33,8 +33,7 @@ USER root
 
 RUN mkdir -p /usr/share/man/man1 && \
     apt-get update -y && \
-    apt-get -y install curl\
-    apt-get install -y openjdk-11-jdk
+    apt-get -y install curl
 
 RUN apt-get -qqy --no-install-recommends install \
   nodejs \
