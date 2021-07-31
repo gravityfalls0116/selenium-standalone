@@ -4,7 +4,7 @@ LABEL author="Vincent Voyer <vincent@zeroload.net>"
 LABEL maintainer="Serban Ghita <serbanghita@gmail.com>"
 
 ENV LC_ALL=C
-ARG DEBIAN_FRONTEND=teletype
+ARG DEBIAN_FRONTEND=noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN=true
 
 EXPOSE 4444
@@ -28,7 +28,16 @@ RUN dpkg --configure -a
 RUN apt-get install aptitude
 RUN apt-get install -f
 
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+RUN apt-get install -y apt-utils 2>&1 | grep -v "debconf: delaying package configuration, since apt-utils is not installed" && apt-get -qqy --no-install-recommends install \
+  nodejs \
+  firefox \
+  google-chrome-stable \
+  openjdk-11-jre-headless \
+  xvfb \
+  xfonts-100dpi \
+  xfonts-75dpi \
+  xfonts-scalable \
+  xfonts-cyrillic
 RUN apt-get dist-upgrade -y
 RUN apt-get install -y unzip xvfb libxi6 libgconf-2-4
 RUN apt-get install default-jdk
