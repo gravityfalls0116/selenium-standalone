@@ -33,7 +33,8 @@ USER root
 
 RUN sudo apt-get update -y && \
     sudo apt-get -y install curl
-
+RUN sudo add-apt-repository ppa:openjdk-r/ppa
+RUN sudo apt-get update
 RUN apt-get -o Dpkg::Options::="--force-overwrite" --fix-broken install
 RUN dpkg --configure --force-overwrite -a
 
