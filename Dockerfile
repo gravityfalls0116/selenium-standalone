@@ -89,7 +89,7 @@ WORKDIR /home/node
 USER node
 
 RUN npm config set prefix '~/.npm-global'
-RUN vi ~./profile "export PATH=~/.npm-global/bin:$PATH" 
+RUN echo "export PATH=~/.npm-global/bin:$PATH" >> ~./profile
 RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
 RUN npm install -i selenium-standalone --unsafe-perm=true --allow-root
