@@ -28,8 +28,13 @@ RUN groupadd --gid 1000 node \
 RUN echo 'node ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-RUN mkdir -p /usr/share/man/man1
-RUN apt-get update && apt-get install openjdk-11-jre-headless
+
+USER root
+RUN echo "deb http://security.debian.org/debian-security stretch/updates main" >> /etc/apt/sources.list   
+
+RUN mkdir -p /usr/share/man/man1 && \
+    apt-get update -y && \
+    apt-get install -y openjdk-11-jdk
 
 RUN apt-get -qqy --no-install-recommends install \
   nodejs \
