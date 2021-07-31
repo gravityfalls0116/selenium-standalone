@@ -2,7 +2,7 @@ FROM ubuntu:latest@sha256:aba80b77e27148d99c034a987e7da3a287ed455390352663418c0f
 
 LABEL author="Vincent Voyer <vincent@zeroload.net>"
 LABEL maintainer="Serban Ghita <serbanghita@gmail.com>"
-
+RUN ln -s /usr/bin/gcc-4.8 /usr/bin/gcc
 ENV LC_ALL=C
 ARG DEBIAN_FRONTEND=noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN=true
@@ -26,11 +26,9 @@ RUN apt-get -qqy update
 
 RUN dpkg --configure -a
 
-RUN apt-get update -y && \
-  apt-get install -y apt-utils 2> >( grep -v 'debconf: delaying package configuration, since apt-utils is not installed' >&2 ) && \
-  apt-get install -y --no-install-recommends aptitude
+RUN apt-get install -y --no-install-recommends aptitude
 
-  
+
 RUN apt-get install -f
 
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
