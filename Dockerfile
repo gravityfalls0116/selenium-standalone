@@ -88,10 +88,11 @@ WORKDIR /home/node
 # RUN chown node:node -R .
 
 USER node
-
+WORKDIR /home/node
 ENV NPM_CONFIG_PREFIX=/home/node/node_modules
 ENV PATH=$PATH:/home/node/node_modules
-
+COPY package.json ./
+COPY package-lock.json ./
 RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
 
