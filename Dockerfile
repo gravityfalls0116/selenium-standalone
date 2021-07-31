@@ -87,7 +87,7 @@ WORKDIR /home/node
 # ADD . ./selenium-standalone-local
 # RUN chown node:node -R .
 USER node
-RUN webdriver-manager update
+RUN chmod a+w node_modules -R
 RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
 RUN npm install -i selenium-standalone
