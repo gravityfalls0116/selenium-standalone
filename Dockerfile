@@ -87,10 +87,9 @@ WORKDIR /home/node
 # ADD . ./selenium-standalone-local
 # RUN chown node:node -R .
 USER node
-RUN chmod a+w node_modules -R
 RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
-RUN npm install -i selenium-standalone
+RUN npm install -i selenium-standalone --unsafe-perm=true --allow-root
 
 
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
