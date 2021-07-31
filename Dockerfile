@@ -25,6 +25,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/ap
 RUN apt-get -qqy update
 
 RUN dpkg --configure -a
+RUN apt-get install aptitude
 RUN apt-get install -f
 
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
