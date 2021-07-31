@@ -90,15 +90,11 @@ USER node
 
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 ENV PATH=$PATH:/home/node/.npm-global/bin
-WORKDIR /home/node
-COPY package.json .
 
 RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
 
 RUN npm install -i selenium-standalone --unsafe-perm=true --only=prod
-
-COPY . .
 
 
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
