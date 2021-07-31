@@ -92,11 +92,13 @@ RUN npm config set prefix '~/.npm-global'
 RUN echo "export PATH=~/.npm-global/bin:$PATH" >> ~/.profile
 RUN sh ~/.profile
 
-RUN chown -R $USER:$GROUP ~/.npm
-RUN chown -R $USER:$GROUP ~/.config
 
 RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
+
+RUN chown -R $USER:$GROUP ~/.npm
+RUN chown -R $USER:$GROUP ~/.config
+
 RUN npm install -i selenium-standalone --unsafe-perm=true --allow-root
 
 
