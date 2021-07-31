@@ -96,7 +96,7 @@ RUN npm init -y
 
 RUN sudo npm install -i --unsafe-perm=true --allow-root selenium-standalone
 
-RUN sudo chown -R $USER /home/node/node_modules/selenium-standalone/.selenium/
-
 USER root
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
+
+RUN RUN chown -R node ./node_modules/.bin/selenium-standalone
