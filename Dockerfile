@@ -26,10 +26,11 @@ RUN apt-get -qqy update
 
 RUN dpkg --configure -a
 
-RUN \
-  apt-get update -y && \
+RUN apt-get update -y && \
   apt-get install -y apt-utils 2> >( grep -v 'debconf: delaying package configuration, since apt-utils is not installed' >&2 ) && \
   apt-get install -y --no-install-recommends aptitude
+
+  
 RUN apt-get install -f
 
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
