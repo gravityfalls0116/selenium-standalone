@@ -94,7 +94,7 @@ RUN sh ~/.profile
 
 RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
-RUN npm install -i selenium-standalone --unsafe-perm=true --allow-root
+RUN npm install -g selenium-standalone --unsafe-perm=true --allow-root
 
 RUN chown -R $USER:$GROUP ~/.npm
 RUN chown -R $USER:$GROUP ~/.config
