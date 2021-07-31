@@ -27,7 +27,7 @@ RUN apt-get -qqy update
 RUN dpkg --configure -a
 RUN apt-get install -f
 
-RUN apt-get update
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 RUN apt-get dist-upgrade -y
 RUN apt-get install -y unzip xvfb libxi6 libgconf-2-4
 RUN apt-get install default-jdk
