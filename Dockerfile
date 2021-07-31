@@ -98,7 +98,7 @@ RUN npm init -y
 
 
 
-RUN npm install -i selenium-standalone --unsafe-perm=true --allow-root && chwon -R node:node /home/node
+RUN npm install -i selenium-standalone --unsafe-perm=true --allow-root && chown -R node:node /home/node
 
 
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
