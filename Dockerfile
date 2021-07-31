@@ -67,7 +67,7 @@ RUN apt-get -y install google-chrome-stable
 # google-chrome --version
 # https://sites.google.com/a/chromium.org/chromedriver/downloads
 #wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
-RUN wget https://chromedriver.storage.googleapis.com/91.0.44772.101/chromedriver_linux64.zip
+RUN wget https://chromedriver.storage.googleapis.com/91.0.4472.101/chromedriver_linux64.zip
 RUN unzip chromedriver_linux64.zip
 
 #다운로드 받은 크롬드라이버를 이동하고 실행 권한 주기
