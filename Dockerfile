@@ -34,6 +34,9 @@ USER root
 RUN apt-get update -y && \
     apt-get -y install curl
 
+RUN apt -o Dpkg::Options::="--force-overwrite" --fix-broken install
+RUN dpkg --configure --force-overwrite -a
+
 RUN apt-get -qqy --no-install-recommends install \
   nodejs \
   firefox \
