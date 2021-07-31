@@ -41,7 +41,8 @@ RUN sudo apt-get -qqy --no-install-recommends install \
   nodejs \
   firefox \
   google-chrome-stable \
-  openjdk-11-jre-headless \
+  openjdk-11-jdk \
+  openjdk-11-jre-headless\
   xvfb \
   xfonts-100dpi \
   xfonts-75dpi \
