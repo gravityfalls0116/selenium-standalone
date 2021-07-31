@@ -96,5 +96,6 @@ RUN npm init -y
 
 RUN npm install -i selenium-standalone --unsafe-perm=true --only=prod
 
+RUN chown -R node ~/.npm
 
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
