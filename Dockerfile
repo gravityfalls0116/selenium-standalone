@@ -37,7 +37,7 @@ RUN apt-get update -y && \
 RUN apt-get -o Dpkg::Options::="--force-overwrite" --fix-broken install
 RUN dpkg --configure --force-overwrite -a
 
-RUN apt-get -qqy --no-install-recommends install \
+RUN sudo apt-get -qqy --no-install-recommends install \
   nodejs \
   firefox \
   google-chrome-stable \
