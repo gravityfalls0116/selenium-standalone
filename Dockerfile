@@ -57,20 +57,23 @@ RUN sudo apt-get -qqy --no-install-recommends install \
   xfonts-scalable \
   xfonts-cyrillic
 
-RUN apt-get install -y wget xvfb unzip
 
-RUN apt-get update && \
-    apt-get install -y gnupg wget curl unzip --no-install-recommends && \
-    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-    echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list && \
-    apt-get update -y && \
-    apt-get install -y google-chrome-stable && \
-    CHROMEVER=$(google-chrome --product-version | grep -o "[^\.]*\.[^\.]*\.[^\.]*") && \
-    DRIVERVER=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROMEVER") && \
-    wget -q --continue -P /chromedriver "http://chromedriver.storage.googleapis.com/$DRIVERVER/chromedriver_linux64.zip" && \
-    unzip /chromedriver/chromedriver* -d /chromedriver
+RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
+RUN echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+RUN apt-get -y update
+RUN apt-get -y install google-chrome-stable
 
+#자신의 크롬 버젼에 맞는 최신 크롬드라이버 주소를 찾아 다운로드 받습니다.
+# google-chrome --version
+# https://sites.google.com/a/chromium.org/chromedriver/downloads
+#wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
+RUN wget https://chromedriver.storage.googleapis.com/91.0.44772.101/chromedriver_linux64.zip
+RUN unzip chromedriver_linux64.zip
 
+#다운로드 받은 크롬드라이버를 이동하고 실행 권한 주기
+RUN mv chromedriver /usr/bin/chromedriver
+RUN chown root:root /usr/bin/chromedriver
+RUN chmod +x /usr/bin/chromedriver
 
 RUN export DISPLAY=:99.0
 RUN Xvfb :99 -shmem -screen 0 1366x768x16 &
