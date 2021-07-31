@@ -1,13 +1,11 @@
-FROM debian:buster-slim
-
+FROM ubuntu:latest@sha256:aba80b77e27148d99c034a987e7da3a287ed455390352663418c0f2ed40417fe
 
 LABEL author="Vincent Voyer <vincent@zeroload.net>"
 LABEL maintainer="Serban Ghita <serbanghita@gmail.com>"
-RUN ln -s /usr/bin/gcc-4.8 /usr/bin/gcc
+
 ENV LC_ALL=C
-ARG DEBIAN_FRONTEND=noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN=true
-SHELL ["/bin/bash", "-c"]
 
 EXPOSE 4444
 
@@ -18,7 +16,7 @@ RUN apt-get -qqy install \
     curl \
     software-properties-common \
     sudo
-
+RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
 RUN echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/apt/sources.list \
   && echo "deb http://archive.ubuntu.com/ubuntu xenial-updates main universe\n" >> /etc/apt/sources.list \
@@ -26,20 +24,12 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/ap
 RUN apt-get -qqy update
 
 
-
-RUN dpkg --configure -a
-
-RUN apt-get update -y
-RUN apt-get install -y gcc
-
-
-
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 RUN echo 'node ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-RUN apt-get install -y --no-install-recommends\
+RUN apt-get -qqy --no-install-recommends install \
   nodejs \
   firefox \
   google-chrome-stable \
