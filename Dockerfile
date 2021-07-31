@@ -19,7 +19,16 @@ RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-ke
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
 RUN echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/apt/sources.list \
   && echo "deb http://archive.ubuntu.com/ubuntu xenial-updates main universe\n" >> /etc/apt/sources.list \
-  && echo "deb http://security.ubuntu.com/ubuntu xenial-security main universe\n" >> /etc/apt/sources.list
+  && echo "deb http://ca.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse\n" >> /etc/apt/sources.list \
+  && echo "deb http://ca.archive.ubuntu.com/ubuntu/ bionic-updates main restricted universe multiverse\n" >> /etc/apt/sources.list \
+  && echo "deb http://ca.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse" >> /etc/apt/sources.list \
+  && echo "deb http://security.ubuntu.com/ubuntu bionic-security main restricted universe multiverse" >> /etc/apt/sources.list \
+
+  && echo "deb-src http://ca.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse\n" >> /etc/apt/sources.list \
+  && echo "deb-src http://security.ubuntu.com/ubuntu bionic-security main restricted universe multiverse\n" >> /etc/apt/sources.list \
+  && echo "deb-src http://ca.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse\n" >> /etc/apt/sources.list \
+  && echo "deb-src http://ca.archive.ubuntu.com/ubuntu/ bionic-updates main restricted universe multiverse\n" >> /etc/apt/sources.list
+
 RUN apt-get -qqy update
 
 RUN apt install -f
@@ -42,7 +51,6 @@ RUN sudo apt-get -qqy --no-install-recommends install \
   nodejs \
   firefox \
   google-chrome-stable \
-  openjdk-11-jdk \
   openjdk-11-jre-headless\
   xvfb \
   xfonts-100dpi \
