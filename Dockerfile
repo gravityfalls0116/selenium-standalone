@@ -29,11 +29,11 @@ RUN echo 'node ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 
-USER root
-RUN echo "deb http://security.debian.org/debian-security stretch/updates main" >> /etc/apt/sources.list   
+USER root   
 
 RUN mkdir -p /usr/share/man/man1 && \
     apt-get update -y && \
+    apt-get -y install curl\
     apt-get install -y openjdk-11-jdk
 
 RUN apt-get -qqy --no-install-recommends install \
