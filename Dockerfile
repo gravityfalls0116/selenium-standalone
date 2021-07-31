@@ -4,7 +4,7 @@ LABEL author="Vincent Voyer <vincent@zeroload.net>"
 LABEL maintainer="Serban Ghita <serbanghita@gmail.com>"
 
 ENV LC_ALL=C
-ENV DEBIAN_FRONTEND=noninteractive
+ARG DEBIAN_FRONTEND=teletype
 ENV DEBCONF_NONINTERACTIVE_SEEN=true
 
 EXPOSE 4444
