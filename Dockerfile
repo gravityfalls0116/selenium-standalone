@@ -77,6 +77,8 @@ RUN mv chromedriver /usr/bin/google-chrome
 RUN chown root:root /usr/bin/google-chrome
 RUN chmod +x /usr/bin/google-chrome
 
+RUN chmod +x /home/node/node_modules/selenium-standalone/.selenium/chromedriver/latest-x64/chromedriver
+
 RUN export DISPLAY=:99.0
 RUN Xvfb :99 -shmem -screen 0 1366x768x16 &
 
