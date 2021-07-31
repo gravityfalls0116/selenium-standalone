@@ -25,23 +25,13 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/ap
   && echo "deb http://security.ubuntu.com/ubuntu xenial-security main universe\n" >> /etc/apt/sources.list
 RUN apt-get -qqy update
 
-RUN apt-get remove build-essential:i386
-RUN apt-get install build-essential
 
-RUN apt-get install -y --no-install-recommends aptitude
 
 RUN dpkg --configure -a
 
 RUN apt-get update -y
-RUN apt-get -t buster-backports install apt-utils
+RUN apt-get install -y gcc
 
-
-RUN apt-get install -f
-
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
-RUN apt-get dist-upgrade -y
-RUN apt-get install -y unzip xvfb libxi6 libgconf-2-4
-RUN apt-get install default-jdk
 
 
 RUN groupadd --gid 1000 node \
