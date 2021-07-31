@@ -88,7 +88,6 @@ WORKDIR /home/node
 # RUN chown node:node -R .
 
 USER node
-WORKDIR /home/node
 ENV NPM_CONFIG_PREFIX=/home/node/node_modules
 ENV PATH=$PATH:/home/node/node_modules
 COPY package.json ./
