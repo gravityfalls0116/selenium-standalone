@@ -88,6 +88,7 @@ WORKDIR /home/node
 # RUN chown node:node -R .
 
 USER node
+RUN chmod u+x -R 775 ~/.npm
 ENV NPM_CONFIG_PREFIX=/home/node/node_modules
 ENV PATH=$PATH:/home/node/node_modules
 
