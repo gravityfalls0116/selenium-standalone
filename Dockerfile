@@ -25,19 +25,14 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/ap
 RUN apt-get -qqy update
 
 RUN dpkg --configure -a
-RUN apt-get install aptitude
+
+RUN \
+  apt-get update -y && \
+  apt-get install -y apt-utils 2> >( grep -v 'debconf: delaying package configuration, since apt-utils is not installed' >&2 ) && \
+  apt-get install -y --no-install-recommends aptitude
 RUN apt-get install -f
 
-RUN apt-get install -y apt-utils 2>&1 | grep -v "debconf: delaying package configuration, since apt-utils is not installed" && apt-get -qqy --no-install-recommends install \
-  nodejs \
-  firefox \
-  google-chrome-stable \
-  openjdk-11-jre-headless \
-  xvfb \
-  xfonts-100dpi \
-  xfonts-75dpi \
-  xfonts-scalable \
-  xfonts-cyrillic
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 RUN apt-get dist-upgrade -y
 RUN apt-get install -y unzip xvfb libxi6 libgconf-2-4
 RUN apt-get install default-jdk
