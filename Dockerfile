@@ -88,7 +88,6 @@ WORKDIR /home/node
 # RUN chown node:node -R .
 USER node
 
-RUN mkdir ~/.npm-global npm config set prefix '~/.npm-global' vi ~/.profile
 RUN npm config set prefix '~/.npm-global'
 RUN "export PATH=~/.npm-global/bin:$PATH" vi ~/profile
 RUN npm init -y
