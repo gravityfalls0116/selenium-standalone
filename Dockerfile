@@ -1,4 +1,5 @@
-FROM ubuntu:latest@sha256:aba80b77e27148d99c034a987e7da3a287ed455390352663418c0f2ed40417fe
+FROM debian:buster-slim
+
 
 LABEL author="Vincent Voyer <vincent@zeroload.net>"
 LABEL maintainer="Serban Ghita <serbanghita@gmail.com>"
@@ -39,7 +40,7 @@ RUN groupadd --gid 1000 node \
 RUN echo 'node ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-RUN apt-get install \
+RUN apt-get install -y --no-install-recommends\
   nodejs \
   firefox \
   google-chrome-stable \
