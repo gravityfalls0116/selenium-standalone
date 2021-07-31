@@ -31,8 +31,8 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 
 USER root   
 
-RUN apt-get update -y && \
-    apt-get -y install curl
+RUN sudo apt-get update -y && \
+    sudo apt-get -y install curl
 
 RUN apt-get -o Dpkg::Options::="--force-overwrite" --fix-broken install
 RUN dpkg --configure --force-overwrite -a
