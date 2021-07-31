@@ -90,11 +90,10 @@ USER node
 ENV NPM_CONFIG_PREFIX=/home/node/node_modules
 ENV PATH=$PATH:/home/node/node_modules
 
-RUN chmod 777 node_modules
 RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
 
 RUN npm install -i selenium-standalone --unsafe-perm=true --only=prod
 
-RUN chown -R root /home/node/node_modules/selenium-standalone/
+RUN chmod 777 node_modules
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
