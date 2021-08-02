@@ -1,4 +1,4 @@
-FROM ubuntu:18.04@sha256:aba80b77e27148d99c034a987e7da3a287ed455390352663418c0f2ed40417fe
+FROM ubuntu:latest@sha256:aba80b77e27148d99c034a987e7da3a287ed455390352663418c0f2ed40417fe
 LABEL author="Vincent Voyer <vincent@zeroload.net>"
 LABEL maintainer="Serban Ghita <serbanghita@gmail.com>"
 
@@ -55,9 +55,7 @@ RUN sudo apt-get -qqy --no-install-recommends install \
   xfonts-100dpi \
   xfonts-75dpi \
   xfonts-scalable \
-  xfonts-cyrillic \
-  perl
-
+  xfonts-cyrillic
 
 
 RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
@@ -65,8 +63,8 @@ RUN echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" 
 
 RUN apt-get install -y unzip xvfb libxi6 libgconf-2-4
 RUN apt-get -y update
-#RUN apt-get -y install google-chrome-stable
-RUN apt-get -y install liberror-perl
+RUN apt-get -y install google-chrome-stable
+
 
 RUN export DISPLAY=:99.0
 RUN Xvfb :99 -shmem -screen 0 1366x768x16 &
@@ -80,9 +78,10 @@ USER node
 ENV NPM_CONFIG_PREFIX=/home/node/node_modules
 ENV PATH=$PATH:/home/node/node_modules
 
-RUN npm init -y
+#RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
-RUN sudo npm install git+https://github.com/gravityfalls/selenium-standalone.git
+
+RUN sudo npm install -i --unsafe-perm=true --allow-root ssh://git@github.com:webdriverio/selenium-standalone.git
 
 USER root
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
