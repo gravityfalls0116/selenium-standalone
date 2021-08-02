@@ -78,11 +78,8 @@ USER node
 ENV NPM_CONFIG_PREFIX=/home/node/node_modules
 ENV PATH=$PATH:/home/node/node_modules
 
-#RUN npm init -y
+RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
-
-RUN npm cache clean -f
-RUN rm -rf node_modules
 RUN sudo npm i webdriverio/selenium-standalone.git
 
 USER root
