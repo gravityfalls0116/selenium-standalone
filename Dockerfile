@@ -65,19 +65,6 @@ RUN apt-get install -y unzip xvfb libxi6 libgconf-2-4
 RUN apt-get -y update
 RUN apt-get -y install google-chrome-stable
 
-#자신의 크롬 버젼에 맞는 최신 크롬드라이버 주소를 찾아 다운로드 받습니다.
-# google-chrome --version
-# https://sites.google.com/a/chromium.org/chromedriver/downloads
-#wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
-RUN wget https://chromedriver.storage.googleapis.com/91.0.4472.101/chromedriver_linux64.zip
-RUN unzip chromedriver_linux64.zip
-
-#다운로드 받은 크롬드라이버를 이동하고 실행 권한 주기
-RUN mv chromedriver /usr/bin/google-chrome
-RUN chown root:root /usr/bin/google-chrome
-RUN chmod +x /usr/bin/google-chrome
-
-
 
 RUN export DISPLAY=:99.0
 RUN Xvfb :99 -shmem -screen 0 1366x768x16 &
