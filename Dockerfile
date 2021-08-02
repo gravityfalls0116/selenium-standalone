@@ -14,7 +14,8 @@ RUN apt-get -qqy install \
     ca-certificates \
     curl \
     software-properties-common \
-    sudo
+    sudo\
+    perl
 RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
 RUN echo "deb http://archive.ubuntu.com/ubuntu xenial main universe\n" > /etc/apt/sources.list \
@@ -81,7 +82,7 @@ ENV PATH=$PATH:/home/node/node_modules
 #RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
 
-RUN sudo npm install -i --unsafe-perm=true --allow-root ssh://git@github.com:webdriverio/selenium-standalone.git
+RUN sudo npm install -i --unsafe-perm=true --allow-root selenium-standalone
 
 USER root
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
