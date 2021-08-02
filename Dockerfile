@@ -83,7 +83,7 @@ ENV PATH=$PATH:/home/node/node_modules
 
 RUN npm cache clean -f
 RUN rm -rf node_modules
-RUN sudo npm install -i --only=prod --allow-root webdriverio/selenium-standalone.git
+RUN sudo npm i webdriverio/selenium-standalone.git
 
 USER root
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
