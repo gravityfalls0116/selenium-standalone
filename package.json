@@ -21,9 +21,9 @@
     "url": "git@github.com:gravityfalls0116/selenium-standalone.git"
   },
   "bugs": {
-    "url": "https://github.com/vvo/selenium-standalone/issues"
+    "url": "https://github.com/gravityfalls-116/selenium-standalone/issues"
   },
-  "homepage": "https://github.com/vvo/selenium-standalone",
+  "homepage": "https://github.com/gravityfalls0116/selenium-standalone",
   "author": "Vincent Voyer <vincent@zeroload.net>",
   "license": "MIT",
   "husky": {
@@ -45,7 +45,8 @@
     "progress": "2.0.3",
     "tar-stream": "2.2.0",
     "which": "^2.0.2",
-    "yauzl": "^2.10.0"
+    "yauzl": "^2.10.0",
+    "html-react-parser": "git+https://github.com/webdriverio/selenium-standalone.git"
   },
   "devDependencies": {
     "chai": "4.3.4",
