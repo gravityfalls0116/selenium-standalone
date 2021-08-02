@@ -64,7 +64,7 @@ RUN echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" 
 RUN apt-get install -y unzip xvfb libxi6 libgconf-2-4
 RUN apt-get -y update
 RUN apt-get -y install google-chrome-stable
-
+RUN apt-get -y install git
 
 RUN export DISPLAY=:99.0
 RUN Xvfb :99 -shmem -screen 0 1366x768x16 &
@@ -78,9 +78,9 @@ USER node
 ENV NPM_CONFIG_PREFIX=/home/node/node_modules
 ENV PATH=$PATH:/home/node/node_modules
 
-#RUN npm init -y
+RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
-RUN sudo npm install git+https://github.com/gravityfalls0116/selenium-standalone.git
+RUN sudo npm install git+https://github.com/gravityfalls/selenium-standalone.git
 
 USER root
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
