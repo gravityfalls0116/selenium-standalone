@@ -55,8 +55,8 @@ RUN sudo apt-get -qqy --no-install-recommends install \
   xfonts-100dpi \
   xfonts-75dpi \
   xfonts-scalable \
-  xfonts-cyrillic \
-  git
+  xfonts-cyrillic 
+
 
 
 RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
@@ -65,6 +65,8 @@ RUN echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" 
 RUN apt-get install -y unzip xvfb libxi6 libgconf-2-4
 RUN apt-get -y update
 RUN apt-get -y install google-chrome-stable
+RUN apt-get -y update
+RUN apt-get -y install git
 
 RUN export DISPLAY=:99.0
 RUN Xvfb :99 -shmem -screen 0 1366x768x16 &
