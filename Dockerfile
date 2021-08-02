@@ -99,4 +99,4 @@ RUN sudo npm install -i --unsafe-perm=true --allow-root selenium-standalone
 USER root
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
 
-RUN chmod _R 777 ./node_modules/.bin/selenium-standalone
+RUN chmod -R 777 ./node_modules/.bin/selenium-standalone
