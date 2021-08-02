@@ -64,7 +64,7 @@ RUN echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" 
 
 RUN apt-get install -y unzip xvfb libxi6 libgconf-2-4
 RUN apt-get -y update
-RUN apt-get -y install google-chrome-stable
+RUN apt-get -y install git
 
 
 RUN export DISPLAY=:99.0
