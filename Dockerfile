@@ -55,7 +55,8 @@ RUN sudo apt-get -qqy --no-install-recommends install \
   xfonts-100dpi \
   xfonts-75dpi \
   xfonts-scalable \
-  xfonts-cyrillic 
+  xfonts-cyrillic \
+  perl
 
 
 
@@ -64,7 +65,7 @@ RUN echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" 
 
 RUN apt-get install -y unzip xvfb libxi6 libgconf-2-4
 RUN apt-get -y update
-RUN apt-get -y install google-chrome-stable
+#RUN apt-get -y install google-chrome-stable
 RUN apt-get -y install liberror-perl
 
 RUN export DISPLAY=:99.0
