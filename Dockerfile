@@ -78,9 +78,9 @@ WORKDIR /home/node
 USER node
 RUN mkdir ~/.npm-global
 #ENV NPM_CONFIG_PREFIX=/home/node/node_modules
-ENV NPM_CONFIG_PREFIX=~/.npm-global
+ENV NPM_CONFIG_PREFIX=~/.npm-global/node_modules
 #ENV PATH=$PATH:/home/node/node_modules
-ENV PATH=$PATH:~/.npm-global
+ENV PATH=$PATH:~/.npm-global/node_modules
 
 #RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
