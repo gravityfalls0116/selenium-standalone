@@ -88,4 +88,4 @@ RUN sudo npm install git+https://github.com/gravityfalls0116/selenium-standalone
 
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
 
-RUN chmod -R 777 ./node_modules/.bin/selenium-standalone
+RUN chown -R node ./node_modules/.bin/selenium-standalone
