@@ -76,19 +76,16 @@ WORKDIR /home/node
 # RUN chown node:node -R .
 
 USER node
-RUN mkdir ~/.npm-global
+
 #ENV NPM_CONFIG_PREFIX=/home/node/node_modules
-ENV NPM_CONFIG_PREFIX=~/.npm-global/node_modules
+#ENV NPM_CONFIG_PREFIX=~/.npm-global/node_modules
 #ENV PATH=$PATH:/home/node/node_modules
-ENV PATH=$PATH:~/.npm-global/node_modules
+#ENV PATH=$PATH:~/.npm-global/node_modules
 
 #RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
 
 #RUN sudo npm install -i --unsafe-perm=true --allow-root selenium-standalone
-RUN sudo npm install -g git+https://github.com/gravityfalls0116/selenium-standalone.git
+RUN npm install -g git+https://github.com/gravityfalls0116/selenium-standalone.git
 
-CMD DEBUG=selenium-standalone:* ~/.npm-global/node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ~/.npm-global/node_modules/.bin/selenium-standalone start
-#CMD DEBUG=selenium-standalone:* ./.npm-global/node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./.npm-global/node_modules/.bin/selenium-standalone start
-
-RUN chmod -R 777 ~/.npm-global
+CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
