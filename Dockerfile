@@ -76,6 +76,7 @@ WORKDIR /home/node
 # RUN chown node:node -R .
 
 USER node
+
 ENV NPM_CONFIG_PREFIX=/home/node/node_modules
 ENV PATH=$PATH:/home/node/node_modules
 
@@ -83,7 +84,7 @@ ENV PATH=$PATH:/home/node/node_modules
 # RUN npm install -i ./selenium-standalone-local
 
 #RUN sudo npm install -i --unsafe-perm=true --allow-root selenium-standalone
-RUN sudo npm install git+https://github.com/gravityfalls0116/selenium-standalone.git
+RUN sudo npm install --unsafe-perm=true git+https://github.com/gravityfalls0116/selenium-standalone.git
 
 
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
