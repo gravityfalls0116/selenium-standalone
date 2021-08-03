@@ -87,3 +87,6 @@ RUN sudo npm install git+https://github.com/gravityfalls0116/selenium-standalone
 
 
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
+
+RUN sudo chown -R `whoami` ~/.npm
+RUN sudo chown -R `whoami` /home/node/node_modules
