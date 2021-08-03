@@ -75,6 +75,7 @@ WORKDIR /home/node
 # ADD . ./selenium-standalone-local
 # RUN chown node:node -R .
 
+USER node
 ENV NPM_CONFIG_PREFIX=/home/node/node_modules
 ENV PATH=$PATH:/home/node/node_modules
 
