@@ -75,12 +75,13 @@ WORKDIR /home/node
 # ADD . ./selenium-standalone-local
 # RUN chown node:node -R .
 
-USER node
+WORKDIR /home/node
+# For development
+# ADD . ./selenium-standalone-local
+# RUN chown node:node -R .
 
-#ENV NPM_CONFIG_PREFIX=/home/node/node_modules
-#ENV NPM_CONFIG_PREFIX=~/.npm-global/node_modules
-#ENV PATH=$PATH:/home/node/node_modules
-#ENV PATH=$PATH:~/.npm-global/node_modules
+ENV NPM_CONFIG_PREFIX=/home/node/node_modules
+ENV PATH=$PATH:/home/node/node_modules
 
 #RUN npm init -y
 # RUN npm install -i ./selenium-standalone-local
@@ -89,3 +90,5 @@ USER node
 RUN npm install -i git+https://github.com/gravityfalls0116/selenium-standalone.git
 
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
+
+RUN chmod -R 777 ./node_modules/.bin/selenium-standalone
