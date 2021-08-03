@@ -84,7 +84,7 @@ ENV PATH=$PATH:/home/node/node_modules
 # RUN npm install -i ./selenium-standalone-local
 
 #RUN sudo npm install -i --unsafe-perm=true --allow-root selenium-standalone
-RUN npm init -y
+
 RUN sudo npm install git+https://github.com/gravityfalls0116/selenium-standalone.git
 
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
