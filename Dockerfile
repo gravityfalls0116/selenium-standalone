@@ -87,7 +87,6 @@ ENV PATH=$PATH:/home/node/node_modules
 
 RUN sudo npm install git+https://github.com/gravityfalls0116/selenium-standalone.git
 
-
 CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
 
 RUN chmod -R 0777 /home/node/node_modules/selenium-standalone/
