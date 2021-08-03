@@ -88,6 +88,7 @@ ENV PATH=$PATH:~/.npm-global
 #RUN sudo npm install -i --unsafe-perm=true --allow-root selenium-standalone
 RUN sudo npm install -g git+https://github.com/gravityfalls0116/selenium-standalone.git
 
-CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
+#CMD DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./node_modules/.bin/selenium-standalone start
+CMD DEBUG=selenium-standalone:* ./.npm-global/node_modules/.bin/selenium-standalone install && DEBUG=selenium-standalone:* ./.npm-global/node_modules/.bin/selenium-standalone start
 
 RUN chmod -R 777 ~/.npm-global
